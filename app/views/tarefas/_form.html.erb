@@ -1,0 +1,34 @@
+<%= form_for @tarefa do |f| %>
+ 
+  <% if @tarefa.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@tarefa.errors.count, "error") %>:
+      </h2>
+      <ul>
+        <% @tarefa.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= f.label :titulo %><br>
+    <%= f.text_field :titulo %>
+  </p>
+ 
+  <p>
+    <%= f.label :descricao %><br>
+    <%= f.text_area :descricao %><br>
+  </p>
+
+  <p>
+  <%= f.date_select :data%>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
