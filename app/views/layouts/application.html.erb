@@ -9,6 +9,21 @@
   </head>
 
   <body>
+  <div id="user_nav">
+  	<% if user_signed_in? %>
+
+  		Logado como <%= current_user.email %>. Não é você?
+  		<%= link_to "Sing out", destroy_user_session_path, :method => :delete %>
+
+  	<% else %>
+
+  	Crie um login <%= link_to "Sign up", new_user_registration_path %> ou Efetue o login <%= link_to "Sing in", new_user_session_path%>
+
+  	<%end%>
+
+  </div>
+
     <%= yield %>
+
   </body>
 </html>
