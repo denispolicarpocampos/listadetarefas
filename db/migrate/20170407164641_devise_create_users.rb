@@ -1,4 +1,5 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.0]
+  has_many :tarefas
   def change
     create_table :users do |t|
       ## Database authenticatable
@@ -33,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       t.timestamps null: false
     end
+
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
