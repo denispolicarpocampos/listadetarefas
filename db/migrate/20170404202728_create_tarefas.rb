@@ -3,7 +3,6 @@ class CreateTarefas < ActiveRecord::Migration[5.0]
     create_table :tarefas do |t|
       t.string :titulo
       t.text :descricao
-      t.belongs_to :user, index: true
       t.datetime :data
       t.timestamps
     end
