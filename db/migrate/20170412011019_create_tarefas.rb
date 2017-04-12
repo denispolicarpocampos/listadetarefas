@@ -4,6 +4,7 @@ class CreateTarefas < ActiveRecord::Migration[5.0]
       t.string :titulo
       t.text :descricao
       t.datetime :data
+
       t.timestamps
     end
   end
