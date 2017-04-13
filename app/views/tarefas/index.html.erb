@@ -1,23 +1,32 @@
-<h1>Lista de tarefas</h1>
-<%= link_to 'Nova Tarefa', new_tarefa_path %> 
- 
+<div class="row container-fluid">
 
-<table>
-  <tr>
-    <th>Titulo</th>
-    <th>Descrição</th>
-    <th>Data</th>
-    <th colspan="4"></th>
-  </tr>
- 
-  <% @tarefa.each do |tarefa| %>
-    <tr>
-      <td><%= tarefa.titulo %></td> 
-      <td><%= tarefa.descricao %></td> 
-      <td><%= tarefa.data %></td>
-      <td><%= link_to 'Mostrar', tarefa_path(tarefa) %></td>
-      <td><%= link_to 'Editar', edit_tarefa_path(tarefa) %></td>
-      <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'} %></td>
-    </tr>
-  <% end %>
-</table>
+  <div class="col-md-9 ">
+
+    <h1>Lista de tarefas</h1>
+
+    <button type="button" class="btn btn-default"><%= link_to 'Nova Tarefa', new_tarefa_path %></button>
+
+    <div class="table-responsive">
+    <table class="table table-bordered table-responsive ">
+      <tr>
+        <th>Titulo</th>
+        <th>Descrição</th>
+        <th>Data</th>
+        <th colspan="4"></th>
+      </tr>
+     
+      <% @tarefa.each do |tarefa| %>
+        <tr>
+          <td><%= tarefa.titulo %></td> 
+          <td><%= tarefa.descricao %></td> 
+          <td><%= tarefa.data %></td>
+          <td><button type="button" class="btn btn-default"><%= link_to 'Mostrar', tarefa_path(tarefa) %></button></td>
+          <td><button type="button" class="btn btn-default"><%= link_to 'Editar', edit_tarefa_path(tarefa) %></button></td>
+          <td><button type="button" class="btn btn-default"><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'} %></button></td>
+        </tr>
+      <% end %>
+    </table>
+    </div>
+  </div>
+
+</div>
