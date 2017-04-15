@@ -18,7 +18,9 @@
 
   <body>
 
-<div class="row container-fluid" id="user_nav">
+
+
+<div class="container-fluid" id="user_nav">
 
   <div class="col-md-12 text-right">
 
@@ -32,10 +34,14 @@
       <p>Crie um login <%= link_to "Sign up", new_user_registration_path %> ou Efetue o login <%= link_to "Sing in", new_user_session_path%></p>
 
       <%end%>
+    
+  
     </div>
+    
+    <%= yield %>
 </div>
 
-    <%= yield %>
+    
 
   </body>
 </html>

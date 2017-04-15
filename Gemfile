@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'devise'
+gem 'simple_form'
 
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'

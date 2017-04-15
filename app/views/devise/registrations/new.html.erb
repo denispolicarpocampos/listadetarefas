@@ -1,0 +1,36 @@
+<div class="row container-fluid">
+
+  <div class="col-md-8 ">
+
+  <div class="panel panel-info">
+
+  <div class="panel-heading"><h2>Cadastro</h2></div>
+
+    <div class="panel-body">
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field form-group">
+          <%= f.input :email %>
+        </div>
+
+        <div class="field form-group">
+          <%= f.input :password, label:"Senha" %>
+        </div>
+
+        <div class="field form-group">
+          <%= f.input :password_confirmation, label:"Confirmar senha" %>
+        </div>
+
+        <div class="actions">
+          <%= f.button :submit %>
+        </div>
+      <% end %>
+
+
+
+     </div> 
+  </div>
+  </div>
+</div>

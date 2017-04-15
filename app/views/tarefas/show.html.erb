@@ -1,27 +1,37 @@
 <div class="row container-fluid">
 
-	<div class="col-md-9 ">
+	<div class="col-md-8 ">
 
 
+      <div class="panel panel-info "> 
 
-		<p>
-		  <strong>Titulo da Tarefa:</strong>
-		  <%= @tarefa.titulo %>
-		</p>
-		 
-		<p>
-		  <strong>Descrição da Tarefa:</strong>
-		  <%= @tarefa.descricao %>
-		 </p>
+        <div class="panel-heading"><h1>Tarefa</h1></div>
 
-		 <p>
+          	<div class="panel-body">
 
-		  <strong>Data de execução:</strong>
-		  <%= @tarefa.data %>
+		
 
-		  <%= link_to 'Voltar', tarefas_path %>
-		  <%= link_to 'Editar', edit_tarefa_path(@tarefa) %> |
-		</p>
+					<dl>
 
+						<dt> Titulo da Tarefa:</dt>
+						<dd><%= @tarefa.titulo %></dd>
+						
+
+						<dt> Descrição da Tarefa:</dt>
+						<dd> <%= @tarefa.descricao %> </dd>
+
+						<dt>Data de execução: </dt>
+						<dd><%= @tarefa.data %> </dd>
+
+					</dl>
+
+					<button class="btn btn-default" type="submit"><%= link_to 'Voltar', tarefas_path %></button> 
+
+					<button class="btn btn-default" type="submit"><%= link_to 'Editar', edit_tarefa_path(@tarefa) %> </button>
+		  
+		
+
+			</div>
+		</div>
 	</div>
 </div>
