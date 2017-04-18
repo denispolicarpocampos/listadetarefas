@@ -18,29 +18,48 @@
 
   <body>
 
+<div>
+   
+     <nav class="navbar navbar-inverse bg-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  
+                  <a class="navbar-brand" href="#">Sistema de Tarefas</a>
+
+                </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
-<div class="container-fluid" id="user_nav">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="navbar-brand">
+                            
+                            <% if user_signed_in? %>
 
-  <div class="col-md-12 text-right">
+                              <p>Logado como <%= current_user.email %>. Não é você?
+                              <%= link_to "Sing out", destroy_user_session_path, :method => :delete %></p>
 
-      <% if user_signed_in? %>
+                            <% else %>
 
-        <p>Logado como <%= current_user.email %>. Não é você?
-        <%= link_to "Sing out", destroy_user_session_path, :method => :delete %></p>
+                            <p>Crie um login <%= link_to "Sign up", new_user_registration_path %> ou Efetue o login <%= link_to "Sing in", new_user_session_path%></p>
 
-      <% else %>
+                            <%end%> 
+                            
+                        </li>                          
+                    </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
 
-      <p>Crie um login <%= link_to "Sign up", new_user_registration_path %> ou Efetue o login <%= link_to "Sing in", new_user_session_path%></p>
+      </nav> 
 
-      <%end%>
+ </div>   
+
+      <%= yield %>
+
+
     
-  
-    </div>
-    
-    <%= yield %>
-</div>
-
     
 
   </body>
