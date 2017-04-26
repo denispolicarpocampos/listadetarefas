@@ -10,6 +10,7 @@ gem 'simple_form'
 
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
+gem 'rails-timeago', '~> 2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'

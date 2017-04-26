@@ -43,8 +43,15 @@ class TarefasController < ApplicationController
 	    redirect_to tarefas_path
 	end
 
+	def complete
+  		@tarefa = current_user.tarefas.complete
+	end
+
+
 	private
 	  def tarefa_params
-	    params.require(:tarefa).permit(:titulo, :descricao, :data)
+	    params.require(:tarefa).permit(:titulo, :descricao, :data, :complete)
 	  end
+
+
 end
