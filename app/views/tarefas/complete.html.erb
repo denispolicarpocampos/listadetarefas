@@ -10,7 +10,9 @@
           <div class="panel-body">
 
 
-              <button type="button" class="btn btn-default"><%= link_to 'Nova Tarefa', new_tarefa_path %></button>
+              
+            <button type="button" class="btn btn-default"><%= link_to 'Tarefas Pendentes', tarefas_path, method: :get %></button>
+
 
             <div class="table table-responsive">
                 <table class="table table-bordered">
