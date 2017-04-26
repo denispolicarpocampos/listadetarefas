@@ -11,7 +11,7 @@
 
 
               <button type="button" class="btn btn-default"><%= link_to 'Nova Tarefa', new_tarefa_path %></button>
-              <<button type="button" class="btn btn-default"><%= link_to 'Tarefas Completas', complete_tarefas_path, method: :get %></button>
+              <button type="button" class="btn btn-default"><%= link_to 'Tarefas Completas', complete_tarefas_path, method: :get %></button>
 
             <div class="table table-responsive">
                 <table class="table table-bordered">
@@ -25,19 +25,23 @@
                   </tr>
 
                  
-                  <% @tarefa.each do |tarefa| %>            
-                      <tr>
-                        <td><%= tarefa.titulo %></td> 
-                        <td><%= tarefa.descricao %></td> 
-                        <td><%= tarefa.data %></td>
-                        <td><%= timeago_tag tarefa.created_at, :nojs => true, :limit => 10.days.ago %></td> 
-                        <td><button type="button" class="btn btn-default" action="<% tarefa.update(complete: true)%>"><%= link_to 'Tarefa Completa', complete_tarefas_path, method: :get %></button></td>
-                        <td><button type="button" class="btn btn-default"><%= link_to 'Mostrar', tarefa_path(tarefa) %></button></td>
-                        <td><button type="button" class="btn btn-default"><%= link_to 'Editar', edit_tarefa_path(tarefa) %></button></td>
-                        <td><button type="button" class="btn btn-default"><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'} %></button></td>
-                      </tr>
+                  <% @tarefa.each do |tarefa| %> 
+
+                    <% if !tarefa.complete?%>   
+
+                        <tr>
+                          <td><%= tarefa.titulo %></td> 
+                          <td><%= tarefa.descricao %></td> 
+                          <td><%= tarefa.data %></td>
+                          <td><%= timeago_tag tarefa.created_at, :nojs => true, :limit => 10.days.ago %></td> 
+                          <td><button type="button" class="btn btn-default" action="<% tarefa.update(complete: true)%>"><%= link_to 'Tarefa Completa', complete_tarefas_path, method: :get %></button></td>
+                          <td><button type="button" class="btn btn-default"><%= link_to 'Mostrar', tarefa_path(tarefa) %></button></td>
+                          <td><button type="button" class="btn btn-default"><%= link_to 'Editar', edit_tarefa_path(tarefa) %></button></td>
+                          <td><button type="button" class="btn btn-default"><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'} %></button></td>
+                        </tr>
                     
-                   
+                    <%end%> 
+
                   <% end %>
                 </table>
             </div>
