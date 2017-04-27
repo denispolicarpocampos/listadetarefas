@@ -6,61 +6,53 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <!-- /app/views/layouts/application.html.erb -->
+ 
+   <!-- (...) -->
+ 
+    <script type="text/javascript">
+      <%= yield :js %>
+    </script>
+
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
-<div>
+    <div>
    
-     <nav class="navbar navbar-inverse bg-inverse navbar-fixed-top">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                  
-                  <a class="navbar-brand" href="#">Sistema de Tarefas</a>
+      <nav class="navbar navbar-inverse bg-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Sistema de Tarefas</a>
+            </div>
 
-                </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
                     <ul class="nav navbar-nav navbar-right">
                         <li class="navbar-brand">
                             
-                            <% if user_signed_in? %>
+                          <% if user_signed_in? %>
 
-                              <p>Logado como <%= current_user.email %>. Não é você?
-                              <%= link_to "Sing out", destroy_user_session_path, :method => :delete %></p>
+                            <p>Logado como <%= current_user.email %>. Não é você?
+                            <%= link_to "Sing out", destroy_user_session_path, :method => :delete %></p>
 
-                            <% else %>
-
+                          <% else %>
                             <p>Crie um login <%= link_to "Sign up", new_user_registration_path %> ou Efetue o login <%= link_to "Sing in", new_user_session_path%></p>
-
-                            <%end%> 
+                          <%end%> 
                             
                         </li>                          
                     </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-
+                </div>
+              </div>
       </nav> 
-
- </div>   
-
-      <%= yield %>
-
-
-    
-    
-
+    </div>   
+    <%= yield %>    
   </body>
 </html>

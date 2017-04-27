@@ -1,36 +1,28 @@
 <div class="row container-fluid">
-
-
-
-<div class="panel panel-info "> 
-
-  <div class="panel-heading">Digite titulo, descrição, data e hora da tarefa</div>
-
+  <div class="panel panel-info "> 
+    <div class="panel-heading">
+      Digite titulo, descrição, data e hora da tarefa
+    </div>
     <div class="panel-body">
-    <%= simple_form_for @tarefa do |f| %>
-     
-      <% if @tarefa.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@tarefa.errors.count, "error") %>:
-          </h2>
-          <ul>
-            <% @tarefa.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <p>
-        <%= f.input :titulo, label: 'Titulo', placeholder: 'Digite o Titulo da sua tarefa'%><br>
-        <%= f.input :descricao, placeholder: 'Descreva sua tarefa'%><br>
-        <%= f.input :data %><br>
-        <%= f.button :submit %>
-      </p>
-   
-
-   
+      <%= simple_form_for @tarefa do |f| %>
+        <% if @tarefa.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@tarefa.errors.count, "error") %>:
+            </h2>
+            <ul>
+              <% @tarefa.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <p>
+          <%= f.input :titulo, label: 'Titulo', placeholder: 'Digite o Titulo da sua tarefa'%><br>
+          <%= f.input :descricao, placeholder: 'Descreva sua tarefa'%><br>
+          <%= f.input :data %><br>
+          <%= f.button :submit %>
+        </p>   
       <% end %>
     </div>
   </div>

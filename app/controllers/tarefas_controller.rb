@@ -43,11 +43,16 @@ class TarefasController < ApplicationController
 	    redirect_to tarefas_path
 	end
 
-	def complete
+	def complete 
+  		current_user.tarefas.update(complete:true)
   		@tarefa = current_user.tarefas.complete
 	end
 
-
+	def continuetask
+		current_user.tarefas.update(complete:false)
+		redirect_to tarefas_path
+	end
+					
 	private
 	  def tarefa_params
 	    params.require(:tarefa).permit(:titulo, :descricao, :data, :complete)
