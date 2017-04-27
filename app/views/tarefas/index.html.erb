@@ -29,7 +29,7 @@
                           <td><%= tarefa.data %></td>
                           <td><%= timeago_tag tarefa.created_at, :nojs => true, :limit => 10.days.ago %></td> 
 
-                          <td><button type="button" class="btn btn-default"><%= link_to 'Tarefa Completa', complete_tarefas_path, remote: true %></button></td>
+                          <td><button type="button" class="btn btn-default"><%= link_to 'Tarefa Completa', complete_tarefa_path(tarefa), remote: true %></button></td>
 
                           <td><button type="button" class="btn btn-default"><%= link_to 'Mostrar', tarefa_path(tarefa) %></button></td>
 

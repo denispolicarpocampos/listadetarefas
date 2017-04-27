@@ -3,7 +3,14 @@ Rails.application.routes.draw do
 	devise_for :users
  
 	resources :tarefas do
-		collection do
+		member do
+   			post :complete
+    		get :complete
+    		post :continuetask
+    		get :continuetask
+    	end
+    	
+    	collection do
    			post :complete
     		get :complete
     		post :continuetask
