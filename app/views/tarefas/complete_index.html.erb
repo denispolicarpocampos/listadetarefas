@@ -4,7 +4,7 @@
     <div class="panel panel-info "> 
       <div class="panel-heading"><h3>Lista de tarefas</h3></div>
         <div class="panel-body"> 
-            <button type="button" class="btn btn-default"><%= link_to 'Tarefas Pendentes', tarefas_path %></button>
+          <%= link_to 'Tarefas Pendentes', tarefas_path, class: "btn btn-default btn-lg btn-lg active" %>
             <div class="table table-responsive">
               <table class="table table-bordered">
                 <tr>
@@ -21,10 +21,9 @@
                         <td><%= tarefa.titulo %></td> 
                         <td><%= tarefa.descricao %></td> 
                         <td><%= tarefa.data %></td>
-                        <td><button type="button" class="btn btn-default"><%= link_to 'Continuar Tarefa', continuetask_tarefa_path(tarefa) %></button></td>
-                        <td><button type="button" class="btn btn-default"><%= link_to 'Mostrar', tarefa_path(tarefa) %></button></td>
-                        <td><button type="button" class="btn btn-default"><%= link_to 'Editar', edit_tarefa_path(tarefa) %></button></td>
-                        <td><button type="button" class="btn btn-default"><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'} %></button></td>
+                        <td><%= link_to 'Continuar Tarefa', incomplete_task_tarefa_path(tarefa), class: "btn btn-success ", remote: true %></td>
+                        <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
+                        <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'}, class: "btn btn-default" %></td>
                       </tr>
                     <% end %>
                   <% end %>

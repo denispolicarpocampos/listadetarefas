@@ -3,60 +3,65 @@ class TarefasController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@tarefa = current_user.tarefas.all
+		@tarefa = current_user.tarefas.all.order(:data)
 	end
 
 	def show
-    	@tarefa = Tarefa.find(params[:id])
- 	end
+		@tarefa = Tarefa.find(params[:id])
+	end
  
-  	def new
-  		@tarefa = Tarefa.new
-  	end
+	def new
+		@tarefa = Tarefa.new
+	end
 
 	def edit
-	    @tarefa = current_user.tarefas.find_by(id: params[:id])
+		@tarefa = current_user.tarefas.find_by(id: params[:id])
 	end
 
 	def create
-	     @tarefa = current_user.tarefas.new(tarefa_params)
-	     if @tarefa.save
-	        redirect_to @tarefa
-	     else
-	        render 'new'
-	     end
+		@tarefa = current_user.tarefas.new(tarefa_params)
+		if @tarefa.save
+			redirect_to @tarefa
+		else
+			render 'new'
+		end
 	end
 
 	def update
-	    @tarefa = current_user.tarefas.find_by(id: params[:id])
-	    if @tarefa.update(tarefa_params)
-	        redirect_to @tarefa
-	    else
-	        render 'edit'
-	    end
+		@tarefa = current_user.tarefas.find_by(id: params[:id])
+		if @tarefa.update(tarefa_params)
+			redirect_to @tarefa
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
-	    @tarefa = current_user.tarefas.find_by(id: params[:id])
-	    @tarefa.destroy
-
-	    redirect_to tarefas_path
+		@tarefa = current_user.tarefas.find_by(id: params[:id])
+		@tarefa.destroy
+		redirect_to tarefas_path
 	end
 
-	def complete 
-  		current_user.tarefas.update(complete:true)
-  		@tarefa = current_user.tarefas.complete
+	def complete_index 
+		@tarefa = current_user.tarefas.complete.order(:data)
 	end
 
-	def continuetask
-		current_user.tarefas.update(complete:false)
+	def complete_update
+		@tarefa = current_user.tarefas.find_by(id: params[:id])
+		@tarefa.update(complete:true)
+		redirect_to complete_index_tarefas_path
+	end
+
+	def incomplete_task
+		@tarefa = current_user.tarefas.find_by(id: params[:id])
+		@tarefa.update(complete:false)
 		redirect_to tarefas_path
 	end
 					
 	private
-	  def tarefa_params
-	    params.require(:tarefa).permit(:titulo, :descricao, :data, :complete)
-	  end
+	def tarefa_params
+		params.require(:tarefa).permit(:titulo, :descricao, :data, :complete)
+	end
 
 
 end

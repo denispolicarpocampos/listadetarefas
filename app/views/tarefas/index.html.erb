@@ -2,10 +2,12 @@
 <br><br><br><br>
   <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-info "> 
-      <div class="panel-heading"><h3>Lista de tarefas</h3></div>
+      <div class="panel-heading">
+      <h3>Lista de tarefas</h3>
+      </div>
         <div class="panel-body">
-          <button type="button" class="btn btn-default"><%= link_to 'Nova Tarefa', new_tarefa_path %></button>
-          <button type="button" class="btn btn-default"><%= link_to 'Tarefas Completas', complete_tarefas_path%></button>
+          <%= link_to 'Nova Tarefa', new_tarefa_path, class: "btn btn-default btn-lg btn-lg active" %></button>
+          <%= link_to 'Tarefas Completas', complete_index_tarefas_path, class: "btn btn-default btn-lg btn-lg active" %></button>
 
           <div class="table table-responsive">
             <table class="table table-bordered">
@@ -27,19 +29,13 @@
                           <td><%= tarefa.titulo %></td> 
                           <td><%= tarefa.descricao %></td> 
                           <td><%= tarefa.data %></td>
-                          <td><%= timeago_tag tarefa.created_at, :nojs => true, :limit => 10.days.ago %></td> 
-
-                          <td><button type="button" class="btn btn-default"><%= link_to 'Tarefa Completa', complete_tarefa_path(tarefa), remote: true %></button></td>
-
-                          <td><button type="button" class="btn btn-default"><%= link_to 'Mostrar', tarefa_path(tarefa) %></button></td>
-
-                          <td><button type="button" class="btn btn-default"><%= link_to 'Editar', edit_tarefa_path(tarefa) %></button></td>
-
-                          <td><button type="button" class="btn btn-default"><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'} %></button></td>
+                          <td><%= timeago_tag tarefa.data, :nojs => true, :limit => 10.days.ago %></td> 
+                          <td><%= link_to 'Completar', complete_update_tarefa_path(tarefa), class: "btn btn-success ", remote: true %></td>
+                          <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
+                          <td><%= link_to 'Editar', edit_tarefa_path(tarefa), class: "btn btn-default" %></td>
+                          <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'}, class: "btn btn-default" %></td>
                         </tr>
-                    
                     <%end%> 
-
                   <% end %>
                 </table>
             </div>
@@ -47,5 +43,4 @@
         </div>
       </div>
   </div>
-
 </div>

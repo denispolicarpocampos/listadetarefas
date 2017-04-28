@@ -1,37 +1,23 @@
 <div class="row container-fluid">
 <br><br><br><br>
 	<div class="col-md-8 col-md-offset-2">
-
-
-      <div class="panel panel-info "> 
-
-        <div class="panel-heading"><h3>Tarefa</h3></div>
-
-          	<div class="panel-body">
-
-		
-
-					<dl>
-
-						<dt> Titulo da Tarefa:</dt>
-						<dd><%= @tarefa.titulo %></dd>
+		<div class="panel panel-info "> 
+			<div class="panel-heading">
+			<h3>Tarefa</h3>
+			</div>
+			<div class="panel-body">
+				<dl>
+					<dt> Titulo da Tarefa:</dt>
+					<dd><%= @tarefa.titulo %></dd>
 						
+					<dt> Descrição da Tarefa:</dt>
+					<dd> <%= @tarefa.descricao %> </dd>
 
-						<dt> Descrição da Tarefa:</dt>
-						<dd> <%= @tarefa.descricao %> </dd>
-
-						<dt>Data de execução: </dt>
-						<dd><%= @tarefa.data %> </dd>
-
-
-					</dl>
-
-					<button class="btn btn-default" type="submit"><%= link_to 'Voltar', tarefas_path %></button> 
-
-					<button class="btn btn-default" type="submit"><%= link_to 'Editar', edit_tarefa_path(@tarefa) %> </button>
-		  
-		
-
+					<dt>Data de execução: </dt>
+					<dd><%= @tarefa.data %> </dd>
+				</dl>
+				<%= link_to 'Editar', edit_tarefa_path(@tarefa), class: "btn btn-default" %> 
+				<%= link_to 'Voltar', tarefas_path, class: "btn btn-default" %>
 			</div>
 		</div>
 	</div>

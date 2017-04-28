@@ -1,10 +1,8 @@
 <div class="row container-fluid">
 <br><br><br><br>
 	<div class="col-md-8 col-md-offset-2">
-		<h3> 
-		Editar tarefas
-		</h3>
+		<h3> Editar tarefas</h3>
 		<%= render 'form' %>
-		<button class="btn btn-default" type="submit"><%= link_to 'Voltar', tarefas_path %></button>
+		<%= link_to 'Voltar', tarefas_path, class: "btn btn-default" %>
 	</div>
 </div>
