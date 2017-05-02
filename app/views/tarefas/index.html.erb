@@ -6,41 +6,48 @@
       <h3>Lista de tarefas</h3>
       </div>
         <div class="panel-body">
-          <%= link_to 'Nova Tarefa', new_tarefa_path, class: "btn btn-default btn-lg btn-lg active" %></button>
-          <%= link_to 'Tarefas Completas', complete_index_tarefas_path, class: "btn btn-default btn-lg btn-lg active" %></button>
+          <%= link_to 'Nova Tarefa', new_tarefa_path, class: "btn btn-default btn-lg btn-lg active" %>
+          <%= link_to 'Tarefas Completas', complete_index_tarefas_path, class: "btn btn-default btn-lg btn-lg active" %>
+            
+          </div>
 
           <div class="table table-responsive">
-            <table class="table table-bordered">
+            <table id="myTable", class="table table-bordered text-center">
               <tr>
-                    <th>Titulo</th>
-                    <th>Descrição</th>
-                    <th>Data e Hora</th>
-                    <th>Cronometro</th>
-                    <th>Estado da Tarefa</th>
-                    <th colspan="3"></th>
-                  </tr>
+                <th class=" text-center">Titulo</th>
+                <th class=" text-center">Descrição</th>
+                <th class=" text-center">Data e Hora</th>
+                <th class=" text-center">Cronometro</th>
+                <th class=" text-center">Estado da Tarefa</th>
+                <th colspan="3"></th>
+              </tr>
 
                  
-                  <% @tarefa.each do |tarefa| %> 
+              <% @tarefa.each do |tarefa| %> 
 
-                    <% if !tarefa.complete? %>   
-
-                        <tr>
-                          <td><%= tarefa.titulo %></td> 
-                          <td><%= tarefa.descricao %></td> 
-                          <td><%= tarefa.data %></td>
-                          <td><%= timeago_tag tarefa.data, :nojs => true, :limit => 10.days.ago %></td> 
-                          <td><%= link_to 'Completar', complete_update_tarefa_path(tarefa), class: "btn btn-success ", remote: true %></td>
-                          <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
-                          <td><%= link_to 'Editar', edit_tarefa_path(tarefa), class: "btn btn-default" %></td>
-                          <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'}, class: "btn btn-default" %></td>
-                        </tr>
-                    <%end%> 
-                  <% end %>
-                </table>
-            </div>
+                <% if !tarefa.complete? %>   
+                  <tr>
+                  <td><%= tarefa.titulo %></td> 
+                  <td><%= tarefa.descricao %></td> 
+                  <td><%= tarefa.data %></td>
+                  <td><%= timeago_tag tarefa.data, :nojs => true, :limit => 10.days.ago %></td> 
+                  <td><%= link_to 'Completar', complete_update_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %></td>
+                  <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
+                  <td><%= link_to 'Editar', edit_tarefa_path(tarefa), class: "btn btn-default" %></td>
+                  <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'}, class: "btn btn-default" %></td>
+                  </tr>
+                <%end%> 
+              <% end %>
+            </table>
+            <script>
+              function deleteRow(r) {
+                var i = r.parentNode.parentNode.rowIndex;
+                document.getElementById("myTable").deleteRow(i);
+                }
+            </script>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
