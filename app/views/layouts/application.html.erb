@@ -10,7 +10,7 @@
   <body> 
     <header class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Sistema de Tarefas</a>
+        <%= link_to "Sistema de Tarefas", '/', id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
