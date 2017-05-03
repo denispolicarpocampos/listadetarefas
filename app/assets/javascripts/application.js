@@ -21,3 +21,8 @@
 //= require js.cookie
 //= require jstz
 //= require browser_timezone_rails/set_time_zone
+//= require locales/jquery.timeago.de.js
+//= require locales/jquery.timeago.ru.js
+//= require jquery.timeago
+
+jQuery.timeago.settings.allowFuture = true;

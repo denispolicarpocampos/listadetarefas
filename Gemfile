@@ -10,8 +10,9 @@ gem 'simple_form'
 gem 'notifyjs_rails'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
-gem 'rails-timeago', '~> 2.0'
 gem 'browser-timezone-rails'
+gem 'rails-timeago', '~> 2.16'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

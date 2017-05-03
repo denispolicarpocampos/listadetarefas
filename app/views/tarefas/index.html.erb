@@ -1,3 +1,11 @@
+<script src="jquery.min.js" type="text/javascript"></script>
+<script src="jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+   jQuery(document).ready(function() {
+     $("time.timeago").timeago();
+   });
+</script> 
+
 <div class="row container-fluid">
 <br><br><br><br>
   <div class="col-md-8 col-md-offset-2">
@@ -30,7 +38,7 @@
                   <td><%= tarefa.titulo %></td> 
                   <td><%= tarefa.descricao %></td> 
                   <td><%= tarefa.data %></td>
-                  <td><%= timeago_tag tarefa.data, :nojs => true, :limit => 10.days.ago %></td> 
+                  <td><%= timeago_tag tarefa.data, :lang => :pt, force: true, :nojs => true, :limit => 10.days.ago %></td> 
                   <td><%= link_to 'Completar', complete_update_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %></td>
                   <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
                   <td><%= link_to 'Editar', edit_tarefa_path(tarefa), class: "btn btn-default" %></td>
