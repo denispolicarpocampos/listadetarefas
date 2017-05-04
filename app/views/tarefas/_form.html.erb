@@ -1,15 +1,26 @@
-<div class="panel panel-primary "> 
-  <div class="panel-heading">
-    <p>Digite titulo, descrição, data e hora da tarefa</p>
-  </div>
-  <div class="panel-body">
-    <%= simple_form_for @tarefa do |f| %>
-      <p>
-        <%= f.input :titulo, placeholder: 'Digite o Titulo da sua tarefa'%><br>
-        <%= f.input :descricao, placeholder: 'Descreva sua tarefa'%><br>
-        <%= f.input :data %><br>
-        <%= f.button :submit %>
-      </p>   
-    <% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default"> 
+      <div class="panel-heading">
+        <p>Digite titulo, descrição, data e hora da tarefa</p>
+      </div>
+      <div class="panel-body">
+        <%= form_for @tarefa do |f| %>
+          <%= render 'shared/error_messages_tarefa' %>
+          <%= f.label :titulo %>
+          <%= f.text_field :titulo, class: "form-control" %>
+          <%= f.label :descricao %>
+          <%= f.text_area :descricao, rows: "5", class: "form-control" %>
+          <%= f.label :data %>
+          <%= f.date_field :data, class: "form-control" %>
+          <%= f.label "Tempo" %>
+          <%= f.time_field :data, class: "form-control" %>
+          <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %> 
+        <% end %>
+        <div id="voltar">  
+          <%= link_to 'Voltar', tarefas_path %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

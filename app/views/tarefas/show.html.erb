@@ -1,19 +1,24 @@
-<div class="col-md-8 col-md-offset-2">
-	<div class="panel panel-primary "> 
-		<div class="panel-heading">
-			<h3>Tarefa</h3>
-		</div>
-		<div class="panel-body">
-			<dl>
-				<dt> Titulo da Tarefa:</dt>
-				<dd><%= @tarefa.titulo %></dd>				
-				<dt> Descrição da Tarefa:</dt>
-				<dd> <%= @tarefa.descricao %> </dd>
-				<dt>Data de execução: </dt>
-				<dd><%= @tarefa.data %> </dd>
-			</dl>
-			<%= link_to 'Voltar', tarefas_path, class: "btn btn-default" %>
-			<%= link_to 'Editar', edit_tarefa_path(@tarefa), class: "btn btn-default" %> 
+<h1>Tarefa</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default"> 
+ 			<div class="panel-heading">
+ 				<p>Mostra a tarefa selecionada</p>
+ 			</div>
+ 			<div class="panel-body">
+				<dl>
+					<dt> Titulo da Tarefa:</dt>
+					<dd><%= @tarefa.titulo %></dd>				
+					<dt> Descrição da Tarefa:</dt>
+					<dd> <%= @tarefa.descricao %> </dd>
+					<dt>Data de execução: </dt>
+					<dd><%= @tarefa.data %> </dd>
+				</dl>
+				<%= link_to 'Voltar', tarefas_path %>
+				<%= link_to 'Editar', edit_tarefa_path(@tarefa) %> 
+			</div>
 		</div>
 	</div>
 </div>
+
+
