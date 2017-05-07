@@ -2,19 +2,17 @@
   <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-default"> 
       <div class="panel-heading">
-        <p>Digite titulo, descrição, data e hora da tarefa</p>
+        <p>Digite título, descrição, data e hora da tarefa</p>
       </div>
       <div class="panel-body">
         <%= form_for @tarefa do |f| %>
           <%= render 'shared/error_messages_tarefa' %>
-          <%= f.label :titulo %>
+          <%= f.label "Título" %>
           <%= f.text_field :titulo, class: "form-control" %>
-          <%= f.label :descricao %>
+          <%= f.label "Descrição" %>
           <%= f.text_area :descricao, rows: "5", class: "form-control" %>
-          <%= f.label :data %>
-          <%= f.date_field :data, class: "form-control" %>
-          <%= f.label "Tempo" %>
-          <%= f.time_field :data, class: "form-control" %>
+          <%= f.label "Data" %>
+          <%= f.datetime_field :data, class: "form-control" %>
           <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %> 
         <% end %>
         <div id="voltar">  
