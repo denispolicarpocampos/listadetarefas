@@ -44,6 +44,7 @@ class TarefasController < ApplicationController
 
 	def complete_index 
 		@tarefa = current_user.tarefas.complete.order(:data)
+		@task = current_user.tarefas.find_by(id: params[:id])
 	end
 
 	def complete_update
@@ -55,7 +56,6 @@ class TarefasController < ApplicationController
 	def incomplete_task
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
 		@tarefa.update(complete:false)
-		redirect_to tarefas_path
 	end
 					
 	private
