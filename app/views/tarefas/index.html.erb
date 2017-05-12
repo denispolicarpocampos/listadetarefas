@@ -8,12 +8,12 @@
     <tr>
       <th class=" text-center">Titulo</th>
         <th class=" text-center">Descrição</th>
-        <th class=" text-center">Data e Hora</th>
+        <th class=" text-center">Tarefa criada em: </th>
         <th class=" text-center">Cronômetro</th>
         <th class=" text-center">Completar Tarefa</th>
         <th colspan="3"></th>
     </tr>
-      <% @tarefa.each do |tarefa| %> 
+      <% @tarefas.each do |tarefa| %> 
         <% if !tarefa.complete? %>   
           <tr>
             <td><%= tarefa.titulo.truncate(30) %></td> 

@@ -4,14 +4,11 @@ Rails.application.routes.draw do
  
 	resources :tarefas do
 		member do
-   		post :complete_update
-    	get :complete_update
-      post :incomplete_task
+      get :complete_update
       get :incomplete_task
     	end
     	
     collection do
-      post :complete_index
       get :complete_index
     end
   end

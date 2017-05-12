@@ -3,7 +3,7 @@ class TarefasController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@tarefa = current_user.tarefas.all.order(:data)
+		@tarefas = current_user.tarefas.all.order(:data)
 	end
 
 	def show
@@ -43,14 +43,13 @@ class TarefasController < ApplicationController
 	end
 
 	def complete_index 
-		@tarefa = current_user.tarefas.complete.order(:data)
-		@task = current_user.tarefas.find_by(id: params[:id])
+		@tarefas = current_user.tarefas.complete.order(:data)
 	end
 
 	def complete_update
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
 		@tarefa.update(complete:true)
-		redirect_to complete_index_tarefas_path
+		@tarefa.update(data_complete:DateTime.now)
 	end
 
 	def incomplete_task
