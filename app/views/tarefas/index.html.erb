@@ -18,9 +18,15 @@
           <tr>
             <td><%= tarefa.titulo.truncate(30) %></td> 
             <td><%= tarefa.descricao.truncate(50) %></td>
-            <td><%= tarefa.data %></td>
-            <td><%= timeago_tag tarefa.data, :lang => :"pt-br", force: true, :nojs => true, :limit => 30.days.ago %></td> 
-            <td><%= link_to 'Completar', complete_update_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %></td>
+            <td><%= tarefa.data.strftime("%d/%m/%Y às %H:%M")  %></td>
+            <td><%= timeago_tag tarefa.data, :lang => :"pt-br", force: true, :nojs => true, :limit => 30.days.ago %></td>
+
+            <% if tarefa.data < DateTime.now %> 
+              <td><%= link_to 'Completar', complete_update_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %></td>
+            <% else %>
+              <td><button type="button" class="btn btn-primary">Primary</button></td>
+            <% end %>
+
             <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
             <td><%= link_to 'Editar', edit_tarefa_path(tarefa), class: "btn btn-default" %></td>
             <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'}, class: "btn btn-default" %></td>
@@ -30,9 +36,9 @@
   </table>
 </div>
 <script>
-  function deleteRow(r) {
-    var i = r.parentNode.parentNode.rowIndex;
-    document.getElementById("myTable").deleteRow(i);
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("myTable").deleteRow(i);
   }
 </script>
 

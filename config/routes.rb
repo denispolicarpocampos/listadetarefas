@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 	resources :tarefas do
 		member do
       get :complete_update
-      get :incomplete_task
+      patch :incomplete_task
       get :edit_complete_task
     	end
     	

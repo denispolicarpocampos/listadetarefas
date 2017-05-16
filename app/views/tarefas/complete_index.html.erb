@@ -17,14 +17,9 @@
         <tr>
           <td><%= tarefa.titulo.truncate(30) %></td> 
           <td><%= tarefa.descricao.truncate(50) %></td>
-          <td><%= tarefa.data %></td>
-          <td><%= tarefa.data_complete %></td>
-          <td><%= link_to 'Continuar Tarefa', incomplete_task_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %>
-            
-          <%= link_to "Nuevo Producto", edit_complete_task_tarefa_path(tarefa), remote: true, class: "btn btn-primary" %>
-          </td>
-      
-
+          <td><%= tarefa.data.strftime("%d/%m/%Y às %H:%M") %></td>
+          <td><%= tarefa.data_complete.strftime("%d/%m/%Y às %H:%M")  %></td>
+          <td><%= link_to "Completar Tarefa", edit_complete_task_tarefa_path(tarefa), remote: true, class: "btn btn-success", remote: true %></td>
           <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
           <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'}, class: "btn btn-default" %></td>
         </tr>
@@ -32,9 +27,4 @@
     <% end %>
   </table>
 </div>
-<script>
-  function deleteRow(r) {
-    var i = r.parentNode.parentNode.rowIndex;
-    document.getElementById("myTable").deleteRow(i);
-  }
-</script>
+

@@ -12,6 +12,7 @@ module Listadetarefas
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     Date::DATE_FORMATS[:default] = '%d/%m/%Y'
-	Time::DATE_FORMATS[:default]= '%d/%m/%Y %H:%M:%S'
+	Time::DATE_FORMATS[:default]= '%d/%m/%Y %H:%M'
+	
   end
 end

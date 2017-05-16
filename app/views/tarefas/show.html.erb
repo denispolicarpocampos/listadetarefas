@@ -12,7 +12,7 @@
 					<dt> Descrição da Tarefa:</dt>
 					<dd> <%= @tarefa.descricao %> </dd>
 					<dt>Data de execução: </dt>
-					<dd><%= @tarefa.data %> </dd>
+					<dd><%= @tarefa.data.strftime("%d/%m/%Y às %H:%M") %> </dd>
 				</dl>
 				<%= link_to 'Voltar', tarefas_path %>
 				<%= link_to 'Editar', edit_tarefa_path(@tarefa) %> 

@@ -4,6 +4,7 @@ class TarefasController < ApplicationController
 
 	def index
 		@tarefas = current_user.tarefas.all.order(:data)
+
 	end
 
 	def show
@@ -12,6 +13,7 @@ class TarefasController < ApplicationController
  
 	def new
 		@tarefa = Tarefa.new
+		@data = DateTime.now.strftime("%Y%m%d%H%M") 
 	end
 
 	def edit
@@ -34,6 +36,7 @@ class TarefasController < ApplicationController
 		else
 			render 'edit'
 		end
+
 	end
 
 	def destroy
@@ -49,18 +52,21 @@ class TarefasController < ApplicationController
 	def complete_update
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
 		@tarefa.update(complete:true)
-		@tarefa.update(data_complete:DateTime.now)
+		@tarefa.update(data_complete:DateTime.now.strftime("%Y%m%d%H%M") )
 	end
 
 	def incomplete_task
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
-		@tarefa.update(complete:false)
+		if @tarefa.update(data_tarefa_params)
+			@tarefa.update(complete:false)
+			redirect_to complete_index_tarefas_path
+		end
 	end
 
 
 	def edit_complete_task
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
-		@tarefa.update(complete:false)
+		@data = DateTime.now.strftime("%Y%m%d%H%M") 
 	end
 					
 	private
@@ -68,5 +74,8 @@ class TarefasController < ApplicationController
 		params.require(:tarefa).permit(:titulo, :descricao, :data, :complete)
 	end
 
+	def data_tarefa_params
+		params.require(:tarefa).permit(:data)
+	end
 
 end
