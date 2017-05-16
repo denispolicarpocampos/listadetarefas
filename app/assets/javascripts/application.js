@@ -25,4 +25,6 @@
 //= require locales/jquery.timeago.ru.js
 //= require jquery.timeago
 
+
+
 jQuery.timeago.settings.allowFuture = true;

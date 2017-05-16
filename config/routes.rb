@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 		member do
       get :complete_update
       get :incomplete_task
+      get :edit_complete_task
     	end
     	
     collection do

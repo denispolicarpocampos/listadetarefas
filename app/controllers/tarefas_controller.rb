@@ -56,6 +56,12 @@ class TarefasController < ApplicationController
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
 		@tarefa.update(complete:false)
 	end
+
+
+	def edit_complete_task
+		@tarefa = current_user.tarefas.find_by(id: params[:id])
+		@tarefa.update(complete:false)
+	end
 					
 	private
 	def tarefa_params

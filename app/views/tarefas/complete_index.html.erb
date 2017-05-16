@@ -7,7 +7,7 @@
     <tr>
       <th class=" text-center">Titulo</th>
       <th class=" text-center">Descrição</th>
-      <th class=" text-center">Tarefa Criada em:</th>
+      <th class=" text-center">Tarefa iniciada em:</th>
       <th class=" text-center">Tarefa completada em:</th>
       <th class=" text-center">Continuar Tarefa</th>
       <th colspan="3"></th>
@@ -19,7 +19,12 @@
           <td><%= tarefa.descricao.truncate(50) %></td>
           <td><%= tarefa.data %></td>
           <td><%= tarefa.data_complete %></td>
-          <td><%= link_to 'Continuar Tarefa', incomplete_task_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %></td>
+          <td><%= link_to 'Continuar Tarefa', incomplete_task_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %>
+            
+          <%= link_to "Nuevo Producto", edit_complete_task_tarefa_path(tarefa), remote: true, class: "btn btn-primary" %>
+          </td>
+      
+
           <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
           <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'}, class: "btn btn-default" %></td>
         </tr>

@@ -12,7 +12,7 @@
           <%= f.label "Descrição" %>
           <%= f.text_area :descricao, rows: "5", class: "form-control" %>
           <%= f.label "Data" %>
-          <%= f.datetime_field :data, min: Date.today, class: "form-control"  %>
+          <%= f.datetime_field :data, min: DateTime.now, class: "form-control"  %>
           <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %> 
         <% end %>
         <div id="voltar">  

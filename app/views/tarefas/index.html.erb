@@ -8,7 +8,7 @@
     <tr>
       <th class=" text-center">Titulo</th>
         <th class=" text-center">Descrição</th>
-        <th class=" text-center">Tarefa criada em: </th>
+        <th class=" text-center">Tarefa iniciada em: </th>
         <th class=" text-center">Cronômetro</th>
         <th class=" text-center">Completar Tarefa</th>
         <th colspan="3"></th>
@@ -19,7 +19,7 @@
             <td><%= tarefa.titulo.truncate(30) %></td> 
             <td><%= tarefa.descricao.truncate(50) %></td>
             <td><%= tarefa.data %></td>
-            <td><%= timeago_tag tarefa.data, :lang => :pt, force: true, :nojs => true, :limit => 30.days.ago %></td> 
+            <td><%= timeago_tag tarefa.data, :lang => :"pt-br", force: true, :nojs => true, :limit => 30.days.ago %></td> 
             <td><%= link_to 'Completar', complete_update_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %></td>
             <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
             <td><%= link_to 'Editar', edit_tarefa_path(tarefa), class: "btn btn-default" %></td>
