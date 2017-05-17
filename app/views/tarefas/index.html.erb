@@ -21,10 +21,10 @@
             <td><%= tarefa.data.strftime("%d/%m/%Y às %H:%M")  %></td>
             <td><%= timeago_tag tarefa.data, :lang => :"pt-br", force: true, :nojs => true, :limit => 30.days.ago %></td>
 
-            <% if tarefa.data < DateTime.now %> 
+            <% if tarefa.data < @data %> 
               <td><%= link_to 'Completar', complete_update_tarefa_path(tarefa), class: "btn btn-success ", remote: true , onclick:"deleteRow(this)" %></td>
             <% else %>
-              <td><button type="button" class="btn btn-primary">Primary</button></td>
+              <td><button type="button" class="btn btn-primary" id="show">Primary</button></td>
             <% end %>
 
             <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
@@ -35,10 +35,4 @@
       <% end %>
   </table>
 </div>
-<script>
-function deleteRow(r) {
-  var i = r.parentNode.parentNode.rowIndex;
-  document.getElementById("myTable").deleteRow(i);
-  }
-</script>
 

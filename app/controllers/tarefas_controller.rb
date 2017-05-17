@@ -4,6 +4,7 @@ class TarefasController < ApplicationController
 
 	def index
 		@tarefas = current_user.tarefas.all.order(:data)
+		@data = DateTime.now
 
 	end
 
