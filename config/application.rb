@@ -13,6 +13,11 @@ module Listadetarefas
     # -- all .rb files in that directory are automatically loaded.
     Date::DATE_FORMATS[:default] = '%d/%m/%Y'
 	Time::DATE_FORMATS[:default]= '%d/%m/%Y %H:%M'
+
+	#Rspec Configuration
+	config.generators do |g|
+		g.test_framework :rspec
+	end
 	
   end
 end

@@ -5,7 +5,6 @@ class TarefasController < ApplicationController
 	def index
 		@tarefas = current_user.tarefas.all.order(:data)
 		@data = DateTime.now
-
 	end
 
 	def show
@@ -19,6 +18,7 @@ class TarefasController < ApplicationController
 
 	def edit
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
+		@data = DateTime.now
 	end
 
 	def create

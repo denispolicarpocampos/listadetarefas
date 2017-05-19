@@ -19,7 +19,7 @@
           <td><%= tarefa.descricao.truncate(50) %></td>
           <td><%= tarefa.data.strftime("%d/%m/%Y às %H:%M") %></td>
           <td><%= tarefa.data_complete.strftime("%d/%m/%Y às %H:%M")  %></td>
-          <td><%= link_to "Completar Tarefa", edit_complete_task_tarefa_path(tarefa), remote: true, class: "btn btn-success", remote: true %></td>
+          <td><%= link_to "Continuar Tarefa", edit_complete_task_tarefa_path(tarefa), remote: true, class: "btn btn-success", remote: true %></td>
           <td><%= link_to 'Mostrar', tarefa_path(tarefa), class: "btn btn-default" %></td>
           <td><%= link_to 'Apagar', tarefa_path(tarefa), method: :delete, data: { confirm: 'Tem certeza?'}, class: "btn btn-default" %></td>
         </tr>
