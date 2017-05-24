@@ -11,6 +11,9 @@ gem 'notifyjs_rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'browser-timezone-rails'
 gem 'rails-timeago', '~> 2.16'
+gem 'validates_timeliness', '~> 4.0'
+gem 'date_validator', '~> 0.9.0'
+gem 'rails-controller-testing'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
@@ -43,7 +46,17 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
 end
+
+ group :test do
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+ end
 
 
 group :development do

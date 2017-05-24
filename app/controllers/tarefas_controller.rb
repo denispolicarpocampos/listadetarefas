@@ -18,7 +18,7 @@ class TarefasController < ApplicationController
 
 	def edit
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
-		@data = DateTime.now
+		@data = DateTime.now.strftime("%Y%m%d%H%M") 
 	end
 
 	def create
