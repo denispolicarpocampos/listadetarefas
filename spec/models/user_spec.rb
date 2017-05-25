@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+
 	context "Testando a view user" do
 		it "Cadastrar um usuário" do
 	    	visit 'users/sign_in'

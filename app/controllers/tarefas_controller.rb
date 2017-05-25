@@ -64,7 +64,6 @@ class TarefasController < ApplicationController
 		end
 	end
 
-
 	def edit_complete_task
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
 		@data = DateTime.now.strftime("%Y%m%d%H%M") 

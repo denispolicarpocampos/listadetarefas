@@ -36,25 +36,25 @@ RSpec.describe TarefasController, type: :controller do
 
   	describe 'POST #create' do
 	    context "with valid attributes" do
-	      it "saves the new country in the database" do
+	      it "saves the new tarefa in the database" do
 	        expect{
 	          post :create, tarefa: attributes_for(:tarefa)
 	        }.to change(Tarefa, :count).by(1)
 	      end
 
-	      it "redirects to countries#show" do
+	      it "redirects to tarefas#show" do
 	        post :create, tarefa: attributes_for(:tarefa)
         	expect(response).to redirect_to Tarefa.first
 	      end
 	    end
 
 		context "with invalid attributes" do
-	      it "does not save the new country in the database" do
+	      it "does not save the new tarefa in the database" do
 	        post :create, tarefa: attributes_for(:tarefa, titulo: nil)
 	        expect(Tarefa.count).to eq(0)
 	      end
 
-	      it "does not save the new country in the database" do
+	      it "does not save the new tarefa in the database" do
 	        post :create, tarefa: attributes_for(:tarefa, data: nil)
 	        expect(Tarefa.count).to eq(0)
 	      end
@@ -73,16 +73,32 @@ RSpec.describe TarefasController, type: :controller do
 
 	describe 'PATCH #update' do
 	    before :each do
-	      @tarefa = create(:tarefa, titulo: 'Titulo', descricao: 'testando', data: '18/06/2017 20:00', complete: false)
+	    	@tarefa = create(:tarefa, user: subject.current_user, titulo: 'Titulo', descricao: 'testando', data: '18/06/2017 20:00', complete: false)
 		end
 
 	    context "with valid attributes" do
+	    	it "locates the requested @tarefa" do
+	    		patch :update, id: @tarefa.id, tarefa: { titulo: 'Tituhglo', descricao: 'testando', data: '18/06/2017 20:00', complete: false}
+      			expect(assigns(:tarefa)).to eq(@tarefa)
+	    	end
+	    end
+	end
 
-	      it "locates the requested @country" do
-	        patch :update, id: @tarefa, tarefa: attributes_for(:tarefa)
-	        expect(:tarefa).to eq(@tarefa)
-	      end
-	    end 
+	describe 'DELETE destroy' do
+		before :each do
+			@tarefa = create(:tarefa, user: subject.current_user, titulo: 'Titulo', descricao: 'testando', data: '18/06/2017 20:00', complete: false)
+		end
+
+		it "deletes the contact" do
+			expect{
+				delete :destroy, id: @tarefa.id        
+				}.to change(Tarefa, :count).by(-1)
+			end
+    	it "redirects to contacts#index" do
+    		delete :destroy, id: @tarefa.id
+    		response.should redirect_to tarefas_path
+  		end
 	end
 end
+
 
