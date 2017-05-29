@@ -78,10 +78,41 @@ RSpec.describe TarefasController, type: :controller do
 
 	    context "with valid attributes" do
 	    	it "locates the requested @tarefa" do
-	    		patch :update, id: @tarefa.id, tarefa: { titulo: 'Tituhglo', descricao: 'testando', data: '18/06/2017 20:00', complete: false}
+	    		patch :update, id: @tarefa.id, tarefa: { titulo: 'Titulo', descricao: 'testando', data: '18/06/2017 20:00', complete: false}
       			expect(assigns(:tarefa)).to eq(@tarefa)
 	    	end
+
+	    	it "change @tarefa attributes" do
+		    	patch :update, id: @tarefa.id, tarefa: attributes_for(:tarefa, titulo: 'Titulo2', descricao: 'testando2', data:'18/06/2017 21:00', complete: false)
+		    	@tarefa.reload
+		    	expect(@tarefa.titulo).to eq('Titulo2')
+	        	expect(@tarefa.descricao).to eq('testando2')
+	        	expect(@tarefa.data).to eq("2017-06-18 21:00:00.000000000 -0300")
+	        end
+
+	    	it "redirects to the updated tarefa" do
+		        patch :update, id: @tarefa.id,
+		        tarefa: attributes_for(:tarefa)
+		        expect(response).to redirect_to @tarefa
+      		end
 	    end
+
+	    context "with invalid attributes" do
+	      it "does not change the tarefa attributes" do
+	        patch :update, id: @tarefa,
+	        tarefa: attributes_for(:tarefa, titulo: 'titulo2', descricao: nil, data: nil, complete: false)
+	        @tarefa.reload
+	        expect(@tarefa.titulo).not_to eq('titulo2')
+	        expect(@tarefa.descricao).to eq('testando')
+	       	expect(@tarefa.data).to eq("2017-06-18 20:00:00.000000000 -0300")
+      	  end
+
+	      it "re-renders the :edit template" do
+	        patch :update, id: @tarefa,
+	        tarefa: attributes_for(:tarefa, titulo: nil)
+	        expect(response).to render_template :edit
+	      end
+    	end
 	end
 
 	describe 'DELETE destroy' do
@@ -99,6 +130,27 @@ RSpec.describe TarefasController, type: :controller do
     		response.should redirect_to tarefas_path
   		end
 	end
+
+	describe 'GET #complete_index' do
+		it "renders the :index template" do
+			get :complete_index
+			expect(response).to render_template :complete_index
+		end
+	end
+
+	describe 'GET #complete_update' do
+		it "renders the :index template" do
+			get :complete_update, id: @tarefa
+			expect(response).to render_template :complete_update
+		end
+
+		it "renders the :index template" do
+			get :complete_update, id: @tarefa
+			expect(@tarefa.complete).to eq (true)
+		end
+	end
+
+
 end
 
 
