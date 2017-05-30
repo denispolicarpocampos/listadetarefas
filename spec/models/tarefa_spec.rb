@@ -3,19 +3,6 @@ require 'rails_helper'
 RSpec.describe Tarefa, type: :model do
 
 
-	context "Testando a view user" do
-		it "Cadastrar um usuário" do
-	    	visit 'tarefas/new'
-	    	within(".new_tarefa") do
-	      		fill_in 'Título', with: 'campos_bra@hotmail.com'
-	      		fill_in 'Descrição', with: '123mudar'
-	      		fill_in 'Data', with: '18/06/2017 20:00'
-	    	end
-	    	click_button 'submit'
-	    	expect(page).to have_content('Tarefa')
-	    end
-	end
-
 
 	let(:user) {User.new(email: "campos@uol.com.br", password: "senha123", sign_in_count: 1)}
 	let(:tarefa) {Tarefa.new(user: user, titulo: "testevalido", descricao:"oi", data: "24/05/2017 20:00")}

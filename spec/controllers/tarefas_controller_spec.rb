@@ -138,19 +138,25 @@ RSpec.describe TarefasController, type: :controller do
 		end
 	end
 
-	describe 'GET #complete_update' do
-		it "renders the :index template" do
-			get :complete_update, id: @tarefa
-			expect(response).to render_template :complete_update
+	describe 'GET #edit_complete_task' do
+		before :each do
+			@tarefa = create(:tarefa, user: subject.current_user, titulo: 'Titulo', descricao: 'testando', data: '18/06/2017 20:00', complete: false)
 		end
-
+		
 		it "renders the :index template" do
-			get :complete_update, id: @tarefa
-			expect(@tarefa.complete).to eq (true)
+			xhr :get, :edit_complete_task, id: @tarefa.id
+			expect(response).to render_template :edit_complete_task
 		end
 	end
-
 
 end
 
 
+describe "user settings" do
+  let(:authed_user) { create_logged_in_user }
+
+  it "should allow access" do
+    visit user_settings_path(authed_user)
+    # should be good!
+  end
+end

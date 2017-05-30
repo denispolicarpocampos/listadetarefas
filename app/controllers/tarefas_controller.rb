@@ -67,6 +67,10 @@ class TarefasController < ApplicationController
 	def edit_complete_task
 		@tarefa = current_user.tarefas.find_by(id: params[:id])
 		@data = DateTime.now.strftime("%Y%m%d%H%M") 
+		respond_to do |format|
+    		format.html { redirect_to edit_complete_task }
+    		format.js
+    	end
 	end
 					
 	private
