@@ -1,9 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'devise'
+include Warden::Test::Helpers
 
-
-require_relative 'support/controller_macros'
+require_relative 'support/controller_macros' 
 
 
 ENV['RAILS_ENV'] ||= 'test'
@@ -65,6 +65,7 @@ RSpec.configure do |config|
 
   #Capybara
   config.include Capybara::DSL
+  config.include Warden::Test::Helpers
 
   #Factory Girl
   config.include FactoryGirl::Syntax::Methods

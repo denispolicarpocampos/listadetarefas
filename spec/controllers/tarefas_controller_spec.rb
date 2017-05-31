@@ -150,13 +150,3 @@ RSpec.describe TarefasController, type: :controller do
 	end
 
 end
-
-
-describe "user settings" do
-  let(:authed_user) { create_logged_in_user }
-
-  it "should allow access" do
-    visit user_settings_path(authed_user)
-    # should be good!
-  end
-end
